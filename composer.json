@@ -1,0 +1,12 @@
+{
+    "name": "tekkie/micro-kickstart",
+    "description": "Kickstart an API project",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Georgiana Gligor",
+            "email": "gb@tekkie.ro"
+        }
+    ],
+    "require": {}
+}
