@@ -1,0 +1,17 @@
+nginx:
+  build: devops/nginx
+  ports:
+    - "8080:80"
+  links:
+    - php
+  volumes:
+    - ./:/app
+php:
+  build: devops/php-fpm
+  volumes:
+    - ./:/app
+  working_dir: /app
+qa:
+  build: devops/qa
+  volumes:
+    - ./:/code
