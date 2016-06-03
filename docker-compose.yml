@@ -1,17 +1,23 @@
-nginx:
-  build: devops/nginx
-  ports:
-    - "8080:80"
-  links:
-    - php
-  volumes:
-    - ./:/app
-php:
-  build: devops/php-fpm
-  volumes:
-    - ./:/app
-  working_dir: /app
-qa:
-  build: devops/qa
-  volumes:
-    - ./:/code
+version: "2"
+
+services:
+  nginx:
+    build: devops/nginx
+    container_name: micro_server
+    ports:
+      - "8080:80"
+    expose:
+      - "80"
+    volumes:
+      - ./:/app
+  php:
+    build: devops/php-fpm
+    container_name: micro_php
+    volumes:
+      - ./:/app
+    working_dir: /app
+  qa:
+    build: devops/qa
+    container_name: micro_validator
+    volumes:
+      - ./:/code
