@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# make sure all containers are stopped
+docker-compose stop
+
+# remove unneeded stuff
+rm -rf vendor
+rm -rf var/*
+
+# clean install
+composer install

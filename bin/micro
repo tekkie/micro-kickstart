@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+OPERATION="$1"
+#echo  $OPERATION
+
+case $OPERATION in
+    start)
+    docker-compose up -d
+    ;;
+    stop)
+    docker-compose stop
+    ;;
+    restart)
+    docker-compose stop
+    docker-compose up -d
+    ;;
+    rebuild)
+    docker-compose stop
+    docker-compose build
+    docker-compose up -d
+    ;;
+    help)
+    echo "Allowed operations:
+start
+    - starts containers
+stop
+    - stops all running containers
+restart
+    - stop running containers
+    - start containers
+rebuild
+    - stops running containers
+    - rebuilds images using current config files
+    - starts containers based on new images
+EOL"
+    ;;
+esac
